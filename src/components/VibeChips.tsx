@@ -22,13 +22,14 @@ export function VibeChips({ selectedVibes, onVibeToggle }: VibeChipsProps) {
         return (
           <motion.button
             key={vibe}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 25 }}
             onClick={() => onVibeToggle(vibe as VibeType)}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+            className={`kibo-chip ${
               isSelected
-                ? 'bg-primary text-primary-foreground shadow-glow'
-                : 'bg-secondary/50 text-foreground hover:bg-secondary/80 border border-border'
+                ? 'active'
+                : ''
             }`}
           >
             <span className="mr-2">{config.emoji}</span>
