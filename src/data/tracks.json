@@ -1,0 +1,68 @@
+[
+  {
+    "id": "no-luck-only-hard-work",
+    "title": "No Luck, Only Hard Work",
+    "subtitle": "The Origin Story",
+    "duration": 58,
+    "audioUrl": "/audio/no-luck-only-hard-work.mp3",
+    "coverUrl": "/covers/origin-story.jpg",
+    "vibe": ["eminem-energy", "nicki-style"],
+    "lrc": "[00:00.00] Hook: They say it's luck, but I know the truth\n[00:05.50] Every line of code written in my youth\n[00:10.00] Late nights debugging, coffee getting cold\n[00:15.50] Building dreams with stories yet untold\n[00:20.00] Verse 1: Started from the bottom with a laptop screen\n[00:25.50] Teaching myself to code, chasing the dream\n[00:30.00] Stack Overflow tabs, tutorials on repeat\n[00:35.50] Every error message just made me compete\n[00:40.00] Bridge: No shortcuts taken, no easy way out\n[00:45.50] Every commit pushed with passion and clout\n[00:50.00] Outro: Now I'm here with projects to show\n[00:55.50] Ready to make your applications glow",
+    "stack": ["Next.js", "TypeScript", "Tailwind", "Supabase", "Node.js", "Python"],
+    "links": {
+      "github": "https://github.com/yourname/portfolio",
+      "live": "https://yourportfolio.com"
+    },
+    "metrics": {
+      "users": "10K+",
+      "uptime": "99.9%"
+    },
+    "problem": "Needed to showcase technical skills in a memorable, engaging way that stands out from traditional resumes.",
+    "approach": "Created an innovative music-themed portfolio that tells my story through lyrics while demonstrating full-stack development capabilities.",
+    "impact": "Increased interview callbacks by 300% and landed multiple offers from top tech companies."
+  },
+  {
+    "id": "ecommerce-symphony",
+    "title": "E-commerce Symphony",
+    "subtitle": "Full-Stack Masterpiece",
+    "duration": 142,
+    "audioUrl": "/audio/ecommerce-symphony.mp3",
+    "coverUrl": "/covers/ecommerce-symphony.jpg",
+    "vibe": ["weeknd-synth", "doja-style"],
+    "lrc": "[00:00.00] Intro: Building stores that never close\n[00:08.00] Verse 1: Started with a client's vision grand\n[00:15.00] E-commerce platform, supply and demand\n[00:22.00] React frontend, Node.js backend strong\n[00:29.00] Stripe payments flowing all night long\n[00:36.00] Chorus: Orders processing smooth as silk\n[00:43.00] Database queries flowing like milk\n[00:50.00] Real-time updates, inventory sync\n[00:57.00] Every feature working without a blink\n[01:04.00] Verse 2: Redis cache for lightning speed\n[01:11.00] JWT auth for security need\n[01:18.00] Docker containers, microservices clean\n[01:25.00] Best architecture you've ever seen\n[01:32.00] Outro: Revenue up three hundred percent\n[01:39.00] Mission accomplished, time well spent",
+    "stack": ["React", "Node.js", "PostgreSQL", "Stripe", "Docker", "Redis"],
+    "links": {
+      "github": "https://github.com/yourname/ecommerce-platform",
+      "live": "https://demo-ecommerce.com"
+    },
+    "metrics": {
+      "users": "50K+",
+      "uptime": "99.95%"
+    },
+    "problem": "Client needed a scalable e-commerce platform to handle high traffic and complex inventory management.",
+    "approach": "Built a microservices architecture with React frontend, Node.js APIs, real-time inventory sync, and integrated payment processing.",
+    "impact": "Increased client revenue by 300% and reduced page load times by 60%. Platform now handles 50K+ daily active users."
+  },
+  {
+    "id": "ai-chatbot-chronicles",
+    "title": "AI Chatbot Chronicles",
+    "subtitle": "Machine Learning Journey",
+    "duration": 127,
+    "audioUrl": "/audio/ai-chatbot-chronicles.mp3",
+    "coverUrl": "/covers/ai-chatbot.jpg",
+    "vibe": ["eminem-energy", "weeknd-synth"],
+    "lrc": "[00:00.00] Intro: When humans meet machines\n[00:07.00] Verse 1: Python scripts running through the night\n[00:14.00] Training models to understand and write\n[00:21.00] Natural language processing, tokens in a flow\n[00:28.00] Teaching silicon to learn and grow\n[00:35.00] Chorus: Conversations flowing, AI responding right\n[00:42.00] Context window growing, memories burning bright\n[00:49.00] Vector databases storing knowledge deep\n[00:56.00] Neural networks learning while the city sleeps\n[01:03.00] Verse 2: Hugging Face transformers, fine-tuned with care\n[01:10.00] RAG implementation beyond compare\n[01:17.00] Deployed on AWS, scaling without fear\n[01:24.00] Making AI accessible, crystal clear\n[01:31.00] Outro: Customer satisfaction through the roof\n[01:38.00] AI revolution, living proof",
+    "stack": ["Python", "PyTorch", "Hugging Face", "AWS", "Vector DB", "FastAPI"],
+    "links": {
+      "github": "https://github.com/yourname/ai-chatbot",
+      "live": "https://ai-chatbot-demo.com"
+    },
+    "metrics": {
+      "users": "25K+",
+      "uptime": "99.8%"
+    },
+    "problem": "Company needed an intelligent customer service chatbot to handle 24/7 support inquiries with human-like responses.",
+    "approach": "Developed a RAG-based AI chatbot using transformer models, vector embeddings, and real-time learning capabilities.",
+    "impact": "Reduced customer support costs by 70% and improved response time from hours to seconds. 95% customer satisfaction rate."
+  }
+]
