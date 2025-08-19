@@ -23,9 +23,9 @@ const mainMenuItems = [
 ];
 
 const profileItems = [
-  { title: "About Me", icon: User },
-  { title: "Skills & Experience", icon: Briefcase },
-  { title: "Download Resume", icon: Download },
+  { title: "About Me", url: "/about", icon: User },
+  { title: "Skills & Experience", url: "/skills", icon: Briefcase },
+  { title: "Download Resume", url: "/download", icon: Download },
 ];
 
 const projectCategories = [
@@ -94,13 +94,21 @@ export function SpotifySidebar() {
                 <SidebarMenu>
                   {profileItems.map((item) => (
                     <SidebarMenuItem key={item.title}>
-                      <Button
-                        variant="ghost"
-                        className="w-full justify-start gap-3 px-3 text-sidebar-foreground hover:bg-sidebar-accent/50 hover:text-sidebar-primary"
-                      >
-                        <item.icon className="h-5 w-5" />
-                        <span>{item.title}</span>
-                      </Button>
+                      <SidebarMenuButton asChild>
+                        <NavLink 
+                          to={item.url}
+                          className={({ isActive }) =>
+                            `flex items-center gap-3 px-3 py-2 rounded-md transition-all duration-200 ${
+                              isActive 
+                                ? "bg-sidebar-accent text-sidebar-primary font-medium" 
+                                : "text-sidebar-foreground hover:bg-sidebar-accent/50"
+                            }`
+                          }
+                        >
+                          <item.icon className="h-5 w-5" />
+                          <span>{item.title}</span>
+                        </NavLink>
+                      </SidebarMenuButton>
                     </SidebarMenuItem>
                   ))}
                 </SidebarMenu>
