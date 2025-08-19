@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { useMoodContext } from "@/contexts/MoodContext";
 
 const mainMenuItems = [
   { title: "Home", url: "/", icon: Home },
@@ -27,19 +28,18 @@ const profileItems = [
   { title: "Download Resume", icon: Download },
 ];
 
-const projectPlaylists = [
-  "Full Stack Projects",
-  "Frontend Showcase",
-  "Backend APIs", 
-  "Mobile Apps",
-  "Data Science",
-  "DevOps & Cloud",
-  "Open Source",
-  "Learning Journey"
+const projectCategories = [
+  { title: "Full Stack Projects", filter: "full-stack", count: 2 },
+  { title: "Frontend Showcase", filter: "frontend", count: 1 },
+  { title: "Backend APIs", filter: "backend", count: 1 },
+  { title: "AI/ML Projects", filter: "ai-ml", count: 1 },
+  { title: "E-commerce", filter: "ecommerce", count: 1 },
+  { title: "Learning Journey", filter: "learning", count: 3 },
 ];
 
 export function SpotifySidebar() {
   const { open } = useSidebar();
+  const { setShowMoodSelector } = useMoodContext();
   const collapsed = !open;
 
   return (
@@ -50,9 +50,9 @@ export function SpotifySidebar() {
           <div className="p-6 pb-2">
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-primary-foreground font-bold text-sm">
-                SV
+                BV
               </div>
-              <span className="font-bold text-sidebar-foreground text-lg">Shiva Veera</span>
+              <span className="font-bold text-sidebar-foreground text-lg">Bhavani Veera</span>
             </div>
           </div>
         )}
@@ -116,16 +116,33 @@ export function SpotifySidebar() {
               </SidebarGroupLabel>
               <SidebarGroupContent>
                 <SidebarMenu className="space-y-1">
-                  {projectPlaylists.map((playlist) => (
-                    <SidebarMenuItem key={playlist}>
+                  {projectCategories.map((category) => (
+                    <SidebarMenuItem key={category.title}>
                       <Button
                         variant="ghost"
-                        className="w-full justify-start px-3 text-sidebar-foreground hover:bg-sidebar-accent/50 hover:text-sidebar-primary text-sm"
+                        className="w-full justify-between px-3 text-sidebar-foreground hover:bg-sidebar-accent/50 hover:text-sidebar-primary text-sm"
+                        onClick={() => {
+                          // Handle category filtering
+                          console.log('Filter by:', category.filter);
+                        }}
                       >
-                        <span className="truncate">{playlist}</span>
+                        <span className="truncate">{category.title}</span>
+                        <span className="text-xs text-sidebar-foreground/60">{category.count}</span>
                       </Button>
                     </SidebarMenuItem>
                   ))}
+                  
+                  <Separator className="bg-sidebar-border mx-3 my-2" />
+                  
+                  <SidebarMenuItem>
+                    <Button
+                      variant="ghost"
+                      className="w-full justify-start px-3 text-sidebar-foreground hover:bg-sidebar-accent/50 hover:text-sidebar-primary text-sm"
+                      onClick={() => setShowMoodSelector(true)}
+                    >
+                      <span>🎵 Change Vibe</span>
+                    </Button>
+                  </SidebarMenuItem>
                 </SidebarMenu>
               </SidebarGroupContent>
             </SidebarGroup>

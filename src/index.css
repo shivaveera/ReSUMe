@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -51,6 +52,10 @@
     --gradient-primary: linear-gradient(135deg, hsl(142 76% 36%) 0%, hsl(180 76% 36%) 100%);
     --gradient-hero: linear-gradient(135deg, rgba(30, 215, 96, 0.3) 0%, rgba(0, 0, 0, 0.8) 100%);
     --gradient-card: linear-gradient(145deg, hsl(0 0% 10%) 0%, hsl(0 0% 8%) 100%);
+
+    /* Mood-based theming (default values, will be updated by JS) */
+    --mood-gradient: var(--gradient-primary);
+    --cover-filter: none;
 
     /* Shadows */
     --shadow-glow: 0 0 20px rgba(30, 215, 96, 0.3);
@@ -173,11 +178,16 @@
   }
 
   .duotone-green {
-    background: linear-gradient(135deg, hsl(142 76% 36% / 0.8) 0%, hsl(180 76% 36% / 0.8) 100%);
+    background: var(--mood-gradient);
   }
 
   .duotone-purple {
     background: linear-gradient(135deg, hsl(262 83% 58% / 0.8) 0%, hsl(300 83% 58% / 0.8) 100%);
+  }
+
+  .mood-cover {
+    filter: var(--cover-filter);
+    transition: filter 0.3s ease;
   }
 
   .grain {

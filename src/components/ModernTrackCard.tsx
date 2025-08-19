@@ -67,7 +67,7 @@ export function ModernTrackCard({ track, onPlay, playCount = 0, index }: ModernT
             <img 
               src={track.coverUrl} 
               alt={track.title}
-              className={`w-full h-full object-cover transition-all duration-500 ${
+              className={`w-full h-full object-cover transition-all duration-500 mood-cover ${
                 imageLoaded ? 'scale-100 opacity-100' : 'scale-110 opacity-0'
               } group-hover:scale-105`}
               onLoad={() => setImageLoaded(true)}

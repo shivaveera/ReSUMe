@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Play } from 'lucide-react';
@@ -59,17 +58,19 @@ const Index = () => {
     <div className="p-6 space-y-8">
       {/* Hero Section */}
       <section className="relative">
-        <div className="bg-gradient-to-br from-primary/20 via-primary/10 to-background rounded-lg p-8 mb-6">
+        <div className="bg-gradient-to-br from-primary/20 via-primary/10 to-background rounded-lg p-8 mb-6 overflow-hidden">
+          <div className="absolute inset-0 duotone-green opacity-30" />
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
+            className="relative z-10"
           >
             <h1 className="text-6xl font-bold text-foreground mb-4">
               Good evening
             </h1>
             <p className="text-xl text-muted-foreground mb-6">
-              Discover Shiva Veera's portfolio through code and sound
+              Discover Bhavani Veera's portfolio through code and sound
             </p>
             
             <div className="flex gap-4 mb-8">
