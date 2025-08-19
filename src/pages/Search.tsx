@@ -16,7 +16,8 @@ const Search = () => {
   const filteredTracks = tracks.filter(track =>
     track.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
     track.subtitle.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    track.description.toLowerCase().includes(searchTerm.toLowerCase())
+    track.problem.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    track.stack.some(tech => tech.toLowerCase().includes(searchTerm.toLowerCase()))
   );
 
   const trendingSearches = [

@@ -16,20 +16,20 @@ const ProjectsLibrary = () => {
 
   const categories = [
     { id: 'all', name: 'All Projects', count: tracks.length },
-    { id: 'full-stack', name: 'Full Stack', count: tracks.filter(t => t.vibe.includes('energetic' as VibeType)).length },
-    { id: 'frontend', name: 'Frontend', count: tracks.filter(t => t.vibe.includes('confident' as VibeType)).length },
-    { id: 'backend', name: 'Backend APIs', count: tracks.filter(t => t.vibe.includes('mysterious' as VibeType)).length },
-    { id: 'ai-ml', name: 'AI/ML', count: tracks.filter(t => t.vibe.includes('dreamy' as VibeType)).length },
+    { id: 'full-stack', name: 'Full Stack', count: tracks.filter(t => t.vibe.includes('eminem-energy' as VibeType)).length },
+    { id: 'frontend', name: 'Frontend', count: tracks.filter(t => t.vibe.includes('nicki-style' as VibeType)).length },
+    { id: 'backend', name: 'Backend APIs', count: tracks.filter(t => t.vibe.includes('weeknd-synth' as VibeType)).length },
+    { id: 'ai-ml', name: 'AI/ML', count: tracks.filter(t => t.vibe.includes('doja-style' as VibeType)).length },
   ];
 
   const filteredTracks = selectedCategory === 'all' 
     ? tracks 
     : tracks.filter(track => {
         switch (selectedCategory) {
-          case 'full-stack': return track.vibe.includes('energetic' as VibeType);
-          case 'frontend': return track.vibe.includes('confident' as VibeType);
-          case 'backend': return track.vibe.includes('mysterious' as VibeType);
-          case 'ai-ml': return track.vibe.includes('dreamy' as VibeType);
+          case 'full-stack': return track.vibe.includes('eminem-energy' as VibeType);
+          case 'frontend': return track.vibe.includes('nicki-style' as VibeType);
+          case 'backend': return track.vibe.includes('weeknd-synth' as VibeType);
+          case 'ai-ml': return track.vibe.includes('doja-style' as VibeType);
           default: return true;
         }
       });
@@ -134,7 +134,7 @@ const ProjectsLibrary = () => {
                   <div className="flex-1">
                     <h3 className="font-semibold text-foreground">{track.title}</h3>
                     <p className="text-sm text-muted-foreground">{track.subtitle}</p>
-                    <p className="text-xs text-muted-foreground mt-1">{track.description}</p>
+                    <p className="text-xs text-muted-foreground mt-1">{track.problem}</p>
                   </div>
                   <Button
                     onClick={() => handlePlay(track.id)}
