@@ -2,92 +2,83 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Kibo UI-inspired Design System */
+/* Kibo UI-inspired Design System with Spotify touches */
 
 @layer base {
   :root {
-    /* Kibo-style Dark Theme */
-    --background: 0 0% 3.9%;
+    /* Spotify-inspired Dark Theme */
+    --background: 0 0% 7%;
     --foreground: 0 0% 98%;
 
-    --card: 0 0% 3.9%;
+    --card: 0 0% 10%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 0 0% 3.9%;
+    --popover: 0 0% 7%;
     --popover-foreground: 0 0% 98%;
 
     --primary: 142 76% 36%;
-    --primary-foreground: 355 7% 97%;
+    --primary-foreground: 0 0% 0%;
 
-    --secondary: 240 3.7% 15.9%;
+    --secondary: 0 0% 15%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
 
-    --accent: 240 3.7% 15.9%;
+    --accent: 0 0% 15%;
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
+    --border: 0 0% 20%;
+    --input: 0 0% 15%;
     --ring: 142 76% 36%;
 
-    --radius: 14px;
+    --radius: 8px;
 
-    /* Kibo-style accent system */
-    --accent-green: 142 76% 36%;
-    --accent-purple: 262 83% 58%;
-    --current-accent: var(--accent-green);
+    /* Sidebar colors */
+    --sidebar-background: 0 0% 4%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 142 76% 36%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 12%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 142 76% 36%;
 
-    /* Typography */
-    --font-size-base: 15px;
-    --line-height-base: 1.5;
-
-    /* Spacing scale */
-    --spacing-section: 2.5rem;
-    --spacing-card: 1.25rem;
-    --spacing-grid: 1.5rem;
-
-    /* Motion */
-    --motion-fast: 160ms;
-    --motion-normal: 220ms;
-    --motion-ease: cubic-bezier(0.4, 0, 0.2, 1);
-    --motion-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* Spotify gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(142 76% 36%) 0%, hsl(180 76% 36%) 100%);
+    --gradient-hero: linear-gradient(135deg, rgba(30, 215, 96, 0.3) 0%, rgba(0, 0, 0, 0.8) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 10%) 0%, hsl(0 0% 8%) 100%);
 
     /* Shadows */
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-glow: 0 0 20px rgba(30, 215, 96, 0.3);
+    --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+    --shadow-elevated: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+
+    /* Transitions */
+    --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
 
   .light {
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
-
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
-
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
-
     --primary: 142 76% 36%;
     --primary-foreground: 355 7% 97%;
-
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
-
     --muted: 240 4.8% 95.9%;
     --muted-foreground: 240 3.8% 46.1%;
-
     --accent: 240 4.8% 95.9%;
     --accent-foreground: 240 5.9% 10%;
-
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
     --ring: 142 76% 36%;

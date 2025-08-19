@@ -1,10 +1,10 @@
+
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Header } from '@/components/Header';
-import { AnnouncementBanner } from '@/components/AnnouncementBanner';
+import { Play } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { ModernTrackCard } from '@/components/ModernTrackCard';
 import { VibeChips } from '@/components/VibeChips';
-import { MiniPlayer } from '@/components/MiniPlayer';
 import { getTracks } from '@/lib/getTracks';
 import { usePlayerStore } from '@/store/playerStore';
 import { VibeType } from '@/types/track';
@@ -13,7 +13,7 @@ const Index = () => {
   const [tracks] = useState(getTracks());
   const [selectedVibes, setSelectedVibes] = useState<VibeType[]>([]);
   const [filteredTracks, setFilteredTracks] = useState(tracks);
-  const { currentTrackId, setCurrentTrack, setIsPlaying } = usePlayerStore();
+  const { setCurrentTrack, setIsPlaying } = usePlayerStore();
 
   useEffect(() => {
     if (selectedVibes.length === 0) {
@@ -40,124 +40,143 @@ const Index = () => {
     setIsPlaying(true);
   };
 
-  const currentTrack = tracks.find(t => t.id === currentTrackId);
+  const handlePlayAll = () => {
+    if (filteredTracks.length > 0) {
+      setCurrentTrack(filteredTracks[0].id);
+      setIsPlaying(true);
+    }
+  };
+
+  const handleShuffle = () => {
+    if (filteredTracks.length > 0) {
+      const randomIndex = Math.floor(Math.random() * filteredTracks.length);
+      setCurrentTrack(filteredTracks[randomIndex].id);
+      setIsPlaying(true);
+    }
+  };
 
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
-      
-      <main className="container mx-auto px-6 py-8">
-        <AnnouncementBanner />
-        
-        {/* Hero Section */}
-        <section className="mb-12">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <h1 className="text-5xl lg:text-6xl font-bold text-foreground mb-4 leading-tight">
-                No luck. Only hard work.
-              </h1>
-              <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-                Full-stack developer crafting digital experiences through code, 
-                one commit at a time. Based in Dallas, building for the world.
-              </p>
-              
-              {/* Vibe Chips */}
-              <VibeChips 
-                selectedVibes={selectedVibes} 
-                onVibeToggle={handleVibeToggle} 
-              />
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="relative"
-            >
-              <div className="aspect-square rounded-2xl overflow-hidden grain duotone-green">
-                <img 
-                  src="/covers/origin-story.jpg" 
-                  alt="Shiva Veera"
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = '/placeholder-cover.jpg';
-                  }}
-                />
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Tracks Grid */}
-        <section>
+    <div className="p-6 space-y-8">
+      {/* Hero Section */}
+      <section className="relative">
+        <div className="bg-gradient-to-br from-primary/20 via-primary/10 to-background rounded-lg p-8 mb-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="mb-8"
+            transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl font-bold text-foreground mb-2">
-              Featured Projects
-            </h2>
+            <h1 className="text-6xl font-bold text-foreground mb-4">
+              Good evening
+            </h1>
+            <p className="text-xl text-muted-foreground mb-6">
+              Discover Shiva Veera's portfolio through code and sound
+            </p>
+            
+            <div className="flex gap-4 mb-8">
+              <Button 
+                size="lg" 
+                className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8"
+                onClick={handlePlayAll}
+              >
+                <Play className="mr-2 h-5 w-5 fill-current" />
+                Play all
+              </Button>
+              <Button 
+                variant="outline" 
+                size="lg"
+                className="rounded-full px-8"
+                onClick={handleShuffle}
+              >
+                Shuffle
+              </Button>
+            </div>
+
+            {/* Vibe Chips */}
+            <VibeChips 
+              selectedVibes={selectedVibes} 
+              onVibeToggle={handleVibeToggle} 
+            />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Quick Play Section */}
+      <section>
+        <h2 className="text-2xl font-bold text-foreground mb-6">
+          Recently played
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {tracks.slice(0, 6).map((track) => (
+            <motion.div
+              key={track.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+              className="bg-card hover:bg-muted/50 rounded-lg p-4 flex items-center gap-4 group cursor-pointer transition-colors"
+              onClick={() => handlePlay(track.id)}
+            >
+              <img
+                src={track.coverUrl}
+                alt={track.title}
+                className="w-16 h-16 rounded-md object-cover"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = '/placeholder-cover.jpg';
+                }}
+              />
+              <div className="flex-1 min-w-0">
+                <h3 className="font-semibold text-foreground truncate">
+                  {track.title}
+                </h3>
+                <p className="text-sm text-muted-foreground truncate">
+                  {track.subtitle}
+                </p>
+              </div>
+              <Button
+                size="sm"
+                className="bg-primary hover:bg-primary/90 rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity"
+              >
+                <Play className="h-4 w-4 fill-current" />
+              </Button>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Made for You */}
+      <section>
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-2xl font-bold text-foreground">
+            Made for you
+          </h2>
+          <Button variant="ghost" className="text-muted-foreground hover:text-foreground">
+            Show all
+          </Button>
+        </div>
+        
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+          {filteredTracks.map((track, index) => (
+            <ModernTrackCard
+              key={track.id}
+              track={track}
+              onPlay={() => handlePlay(track.id)}
+              playCount={Math.floor(Math.random() * 1000) + 100}
+              index={index}
+            />
+          ))}
+        </div>
+        
+        {filteredTracks.length === 0 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-center py-12"
+          >
             <p className="text-muted-foreground">
-              {selectedVibes.length > 0 
-                ? `Filtered by ${selectedVibes.length} vibe${selectedVibes.length > 1 ? 's' : ''}`
-                : `${tracks.length} projects showcasing full-stack development`
-              }
+              No projects match the selected vibes. Try different filters.
             </p>
           </motion.div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredTracks.map((track, index) => (
-              <ModernTrackCard
-                key={track.id}
-                track={track}
-                onPlay={() => handlePlay(track.id)}
-                playCount={Math.floor(Math.random() * 1000) + 100} // Mock data
-                index={index}
-              />
-            ))}
-          </div>
-          
-          {filteredTracks.length === 0 && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-center py-12"
-            >
-              <p className="text-muted-foreground">
-                No tracks match the selected vibes. Try different filters.
-              </p>
-            </motion.div>
-          )}
-        </section>
-      </main>
-
-      {/* Mini Player */}
-      {currentTrack && (
-        <MiniPlayer
-          track={currentTrack}
-          onPlay={() => setIsPlaying(!usePlayerStore.getState().isPlaying)}
-        />
-      )}
-
-      {/* Footer */}
-      <footer className="border-t border-border/60 mt-16">
-        <div className="container mx-auto px-6 py-8">
-          <div className="flex items-center justify-between">
-            <p className="text-sm text-muted-foreground">
-              Spotify-inspired. All audio is original.
-            </p>
-            <p className="text-sm text-muted-foreground">
-              © 2024 Shiva Veera. Built with React & TypeScript.
-            </p>
-          </div>
-        </div>
-      </footer>
+        )}
+      </section>
     </div>
   );
 };

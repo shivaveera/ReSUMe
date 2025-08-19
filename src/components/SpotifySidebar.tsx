@@ -1,4 +1,5 @@
-import { Home, Search, Library, Plus, Heart, Download } from "lucide-react";
+
+import { Home, Search, Library, User, Download, Briefcase } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import {
   Sidebar,
@@ -17,24 +18,24 @@ import { Separator } from "@/components/ui/separator";
 const mainMenuItems = [
   { title: "Home", url: "/", icon: Home },
   { title: "Search", url: "/search", icon: Search },
-  { title: "Your Library", url: "/library", icon: Library },
+  { title: "Projects Library", url: "/library", icon: Library },
 ];
 
-const libraryItems = [
-  { title: "Create Playlist", icon: Plus },
-  { title: "Liked Songs", icon: Heart },
-  { title: "Downloaded", icon: Download },
+const profileItems = [
+  { title: "About Me", icon: User },
+  { title: "Skills & Experience", icon: Briefcase },
+  { title: "Download Resume", icon: Download },
 ];
 
-const playlists = [
-  "My Playlist #1",
-  "Discover Weekly",
-  "Release Radar",
-  "Daily Mix 1",
-  "Daily Mix 2",
-  "Chill Hits",
-  "Rock Classics",
-  "Electronic Vibes"
+const projectPlaylists = [
+  "Full Stack Projects",
+  "Frontend Showcase",
+  "Backend APIs", 
+  "Mobile Apps",
+  "Data Science",
+  "DevOps & Cloud",
+  "Open Source",
+  "Learning Journey"
 ];
 
 export function SpotifySidebar() {
@@ -44,6 +45,18 @@ export function SpotifySidebar() {
   return (
     <Sidebar className={collapsed ? "w-16" : "w-64"} collapsible="icon">
       <SidebarContent className="bg-sidebar">
+        {/* Logo */}
+        {!collapsed && (
+          <div className="p-6 pb-2">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-primary-foreground font-bold text-sm">
+                SV
+              </div>
+              <span className="font-bold text-sidebar-foreground text-lg">Shiva Veera</span>
+            </div>
+          </div>
+        )}
+
         {/* Main Navigation */}
         <SidebarGroup>
           <SidebarGroupContent>
@@ -73,13 +86,13 @@ export function SpotifySidebar() {
 
         {!collapsed && (
           <>
-            <Separator className="bg-sidebar-border" />
+            <Separator className="bg-sidebar-border mx-6" />
 
-            {/* Library Actions */}
+            {/* Profile Actions */}
             <SidebarGroup>
               <SidebarGroupContent>
                 <SidebarMenu>
-                  {libraryItems.map((item) => (
+                  {profileItems.map((item) => (
                     <SidebarMenuItem key={item.title}>
                       <Button
                         variant="ghost"
@@ -94,16 +107,16 @@ export function SpotifySidebar() {
               </SidebarGroupContent>
             </SidebarGroup>
 
-            <Separator className="bg-sidebar-border" />
+            <Separator className="bg-sidebar-border mx-6" />
 
-            {/* Playlists */}
+            {/* Project Categories */}
             <SidebarGroup className="flex-1">
               <SidebarGroupLabel className="text-sidebar-foreground/60 text-xs uppercase tracking-wider font-medium px-3">
-                Playlists
+                Project Categories
               </SidebarGroupLabel>
               <SidebarGroupContent>
                 <SidebarMenu className="space-y-1">
-                  {playlists.map((playlist) => (
+                  {projectPlaylists.map((playlist) => (
                     <SidebarMenuItem key={playlist}>
                       <Button
                         variant="ghost"
