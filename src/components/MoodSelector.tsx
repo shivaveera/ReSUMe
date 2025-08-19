@@ -86,7 +86,7 @@ export function MoodSelector() {
             >
               You can change this anytime in settings
             </p>
-          </motion.div>
+          </motion.p>
         </motion.div>
       )}
     </AnimatePresence>
