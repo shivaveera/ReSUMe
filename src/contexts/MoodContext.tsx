@@ -80,18 +80,25 @@ export const MoodProvider: React.FC<MoodProviderProps> = ({ children }) => {
   const [showMoodSelector, setShowMoodSelector] = useState(false);
 
   useEffect(() => {
+    console.log('MoodProvider: Checking for saved mood...');
+    
     // Check if user has already selected a mood
     const savedMood = localStorage.getItem('selected-mood') as MoodType | null;
+    console.log('MoodProvider: Saved mood from localStorage:', savedMood);
+    
     if (savedMood && moodConfigs[savedMood]) {
+      console.log('MoodProvider: Applying saved mood:', savedMood);
       setSelectedMoodState(savedMood);
       applyTheme(savedMood);
     } else {
+      console.log('MoodProvider: No saved mood found, showing mood selector');
       // Show mood selector on first visit
       setShowMoodSelector(true);
     }
   }, []);
 
   const applyTheme = (mood: MoodType) => {
+    console.log('MoodProvider: Applying theme for mood:', mood);
     const config = moodConfigs[mood];
     const root = document.documentElement;
     
@@ -102,9 +109,12 @@ export const MoodProvider: React.FC<MoodProviderProps> = ({ children }) => {
     
     // Update ring color to match primary
     root.style.setProperty('--ring', config.theme.primary);
+    
+    console.log('MoodProvider: Theme applied successfully');
   };
 
   const setSelectedMood = (mood: MoodType) => {
+    console.log('MoodProvider: Setting mood to:', mood);
     setSelectedMoodState(mood);
     setShowMoodSelector(false);
     localStorage.setItem('selected-mood', mood);
@@ -114,6 +124,8 @@ export const MoodProvider: React.FC<MoodProviderProps> = ({ children }) => {
   const getMoodConfig = (mood: MoodType) => moodConfigs[mood];
 
   const currentTheme = selectedMood ? moodConfigs[selectedMood].theme : null;
+
+  console.log('MoodProvider: Current state - mood:', selectedMood, 'showSelector:', showMoodSelector);
 
   return (
     <MoodContext.Provider

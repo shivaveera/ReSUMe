@@ -1,5 +1,6 @@
+
 import { motion } from 'framer-motion';
-import { Play, Users, Clock } from 'lucide-react';
+import { Play, Users, Clock, Music } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Track } from '@/types/track';
@@ -26,14 +27,17 @@ export function TrackCard({ track, onPlay, playCount = 0 }: TrackCardProps) {
       <Card className="group bg-gradient-card hover:bg-card/80 transition-all duration-300 cursor-pointer border-0 shadow-card hover:shadow-elevated">
         <CardContent className="p-4">
           <div className="relative mb-4">
-            <img 
-              src={track.coverUrl} 
-              alt={track.title}
-              className="w-full aspect-square object-cover rounded-md shadow-lg"
-              onError={(e) => {
-                (e.target as HTMLImageElement).src = '/placeholder-cover.jpg';
-              }}
-            />
+            <div className="relative w-full aspect-square rounded-md overflow-hidden bg-muted/50 flex items-center justify-center">
+              {track.coverUrl ? (
+                <img 
+                  src={track.coverUrl} 
+                  alt={track.title}
+                  className="w-full h-full object-cover mood-cover"
+                />
+              ) : (
+                <Music className="w-16 h-16 text-muted-foreground" />
+              )}
+            </div>
             <Button
               size="sm"
               onClick={onPlay}

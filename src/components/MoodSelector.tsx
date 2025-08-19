@@ -14,8 +14,11 @@ export function MoodSelector() {
   const { showMoodSelector, setSelectedMood } = useMoodContext();
 
   const handleMoodSelect = (mood: MoodType) => {
+    console.log('MoodSelector: User selected mood:', mood);
     setSelectedMood(mood);
   };
+
+  console.log('MoodSelector: Rendering with showMoodSelector:', showMoodSelector);
 
   return (
     <AnimatePresence>
@@ -24,7 +27,8 @@ export function MoodSelector() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+          style={{ zIndex: 9999 }}
         >
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
@@ -81,7 +85,7 @@ export function MoodSelector() {
               className="text-xs text-muted-foreground mt-6"
             >
               You can change this anytime in settings
-            </motion.p>
+            </p>
           </motion.div>
         </motion.div>
       )}
